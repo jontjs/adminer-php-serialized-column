@@ -9,18 +9,6 @@
 class AdminerPHPSerializedColumn {
 
 	function head() {
-		?>
-		<script type="text/javascript">
-			function show_phpobject(id) {
-				document.getElementById(id + '-closed').style.display = 'none';
-				document.getElementById(id + '-opened').style.display = 'block';
-			}
-			function hide_phpobject(id) {
-				document.getElementById(id + '-closed').style.display = 'block';
-				document.getElementById(id + '-opened').style.display = 'none';
-			}
-		</script>
-		<?php
 	}
 
 	
@@ -28,8 +16,7 @@ class AdminerPHPSerializedColumn {
 		if ($this->isSerialized($value)) {
 			$object_id = 'php-serialized-object-' . $table . '-' . $field['field'];
 			echo '<table cellspacing="0"><tr><td>';
-			echo '<div id="'. $object_id . '-closed"><input type="button" value="Show PHP oblect" onclick="show_phpobject(\'' . $object_id . '\');"></div>';
-			echo '<div id="'. $object_id . '-opened" style="display:none"><input type="button" value="Hide PHP oblect" onclick="hide_phpobject(\'' . $object_id . '\');"><pre>' . print_r(unserialize($value), true) . '</pre></div>';
+			echo '<div id="'. $object_id . '-opened"><pre>' . print_r(unserialize($value), true) . '</pre></div>';
 			echo '</td></tr></table>';
 		}
 	}
